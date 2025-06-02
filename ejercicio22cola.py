@@ -1,13 +1,20 @@
 from queue import Queue
+class PersonajesMarvel:
+    def __init__(self, nombre, personaje, genero):
+        self.nombre = nombre
+        self.personaje = personaje
+        self.genero = genero
+    def __str__(self):
+        return f"nombre: {self.nombre}, personaje: {self.personaje}, genero: {self.genero}"
 personajes = Queue()
-personajes.arrive({"nombre": "Tony Stark", "personaje": "Iron Man", "genero": "M"})
-personajes.arrive({"nombre": "Steve Rogers", "personaje": "Capitán América", "genero": "M"})
-personajes.arrive({"nombre": "Natasha Romanoff", "personaje": "Black Widow", "genero": "F"})
-personajes.arrive({"nombre": "Bruce Banner", "personaje": "Hulk", "genero": "M"})
-personajes.arrive({"nombre": "Carol Danvers", "personaje": "Capitana Marvel", "genero": "F"})
-personajes.arrive({"nombre": "Peter Parker", "personaje": "Spider-Man", "genero": "M"})
-personajes.arrive({"nombre": "Wanda Maximoff", "personaje": "Scarlet Witch", "genero": "F"})
-personajes.arrive({"nombre": "Scott Lang", "personaje": "Ant Man", "genero": "M"})
+personajes.arrive(PersonajesMarvel("Tony Stark", "Iron Man", "M"))
+personajes.arrive(PersonajesMarvel("Steve Rogers", "Capitán América", "M"))
+personajes.arrive(PersonajesMarvel("Natasha Romanoff", "Black Widow", "F"))
+personajes.arrive(PersonajesMarvel("Bruce Banner", "Hulk", "M"))
+personajes.arrive(PersonajesMarvel("Carol Danvers", "Capitana Marvel", "F"))
+personajes.arrive(PersonajesMarvel("Peter Parker", "Spider-Man", "M"))
+personajes.arrive(PersonajesMarvel("Wanda Maximoff", "Scarlet Witch", "F"))
+personajes.arrive(PersonajesMarvel("Scott Lang", "Ant Man", "M"))
 
 
 
@@ -15,8 +22,8 @@ def NombreDeLaCapMarvel(personajes):
     colaAux =  Queue()
     while personajes.size() > 0:
         personaje= personajes.attention()
-        if personaje['personaje'] == 'Capitana Marvel':
-            print(personaje['nombre'])
+        if personaje.personaje == 'Capitana Marvel':
+            print(personaje.nombre)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
@@ -27,8 +34,8 @@ def MostrarNombresDePersonajesFem(personajes):
     colaAux = Queue()
     while personajes.size() > 0:
         personaje = personajes.attention()
-        if personaje['genero'] == 'F':
-            print(personaje['nombre'])
+        if personaje.genero == 'F':
+            print(personaje.nombre)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
@@ -38,8 +45,8 @@ def MostrarNombresDePersonajesMas(personajes):
     colaAux = Queue()
     while personajes.size() > 0:
         personaje = personajes.attention()
-        if personaje['genero'] == 'M':
-            print(personaje['nombre'])
+        if personaje.genero == 'M':
+            print(personaje.nombre)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
@@ -49,8 +56,8 @@ def MostrarNombreDeAntMan(personajes):
     colaAux = Queue()
     while personajes.size() > 0:
         personaje = personajes.attention()
-        if personaje['nombre'] == 'Scott Lang':
-            print(personaje['personaje'])
+        if personaje.nombre == 'Scott Lang':
+            print(personaje.personaje)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
@@ -60,8 +67,8 @@ def PersonajesConLetraS(personajes):
     colaAux = Queue()
     while personajes.size() > 0:
         personaje = personajes.attention()
-        if personaje['nombre'][0] == 'S':
-            print(personaje['nombre'], personaje['personaje'], personaje['genero'])
+        if personaje.nombre[0] == 'S':
+            print('nombre: ', personaje.nombre, 'personaje: ', personaje.personaje, 'genero: ', personaje.genero)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
@@ -71,8 +78,8 @@ def EncontrarCarolDanvers(personajes):
     colaAux = Queue()
     while personajes.size() > 0:
         personaje = personajes.attention()
-        if personaje['nombre'] == 'Carol Danvers':
-                print("nombre: ",personaje['nombre'], "personaje: ", personaje ['personaje'], "genero: ", personaje['genero'])
+        if personaje.nombre == 'Carol Danvers':
+                print("nombre: ",personaje.nombre, "personaje: ", personaje.personaje, "genero: ", personaje.genero)
         colaAux.arrive(personaje)
     
     while colaAux.size() > 0:
